@@ -83,6 +83,20 @@ createPool() ──► PENDING ──── attestQuote(tier1) ──► ACTIVE
 - [Foundry](https://book.getfoundry.sh/getting-started/installation)
 - Ethereum RPC URL (e.g., `https://ethereum-rpc.publicnode.com`)
 
+**Install Foundry:**
+
+```bash
+# Option 1: Using Homebrew (macOS/Linux)
+brew install foundry
+
+# Option 2: Using foundryup installer
+curl -L https://foundry.paradigm.xyz | bash
+source ~/.zshrc  # or ~/.bashrc
+foundryup
+```
+
+Verify installation: `forge --version`
+
 ### Build & Test
 
 ```bash
