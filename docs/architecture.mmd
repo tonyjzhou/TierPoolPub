@@ -1,0 +1,98 @@
+flowchart TB
+  %% ═══════════════════════════════════════════
+  %% ACTORS
+  %% ═══════════════════════════════════════════
+  O[Organizer]
+  V["Vendor(s)<br/>1 per tier"]
+  C[Contributors]
+  R[Recipient]
+  ANY[Anyone]
+
+  %% ═══════════════════════════════════════════
+  %% OFF-CHAIN COMPONENTS
+  %% ═══════════════════════════════════════════
+  UI["Frontend dApp<br/>Pool list / Detail / Quote verification"]
+  DOC["Quote documents<br/>IPFS or URL"]
+  IDX["Indexer / Subgraph<br/>(required for discovery)"]
+
+  %% ═══════════════════════════════════════════
+  %% ON-CHAIN (EVM)
+  %% ═══════════════════════════════════════════
+  subgraph CHAIN["EVM Chain / Any EVM"]
+    subgraph TP["TierPool Contract"]
+      direction TB
+      PENDING["PENDING<br/>Tier 1 not attested"]
+      ACTIVE["ACTIVE<br/>Tier 1 attested, before deadline"]
+
+      subgraph POST_DEADLINE["After Deadline (dynamic evaluation)"]
+        direction TB
+        CHECK{{"payableTier >= 1?"}}
+        COOLDOWN["COOLDOWN<br/>exit() allowed"]
+        REFUNDING["REFUNDING<br/>claimRefund() allowed"]
+        CHECK2{{"cooldown ends<br/>payableTier >= 1?"}}
+        PAYABLE["PAYABLE<br/>finalize() allowed"]
+      end
+
+      PAID["PAID<br/>finalized"]
+    end
+
+    MNEE["MNEE ERC-20<br/>(token address injected)"]
+  end
+
+  %% ═══════════════════════════════════════════
+  %% STATE TRANSITIONS
+  %% ═══════════════════════════════════════════
+  O -->|createPool| PENDING
+  V -->|"attestQuote(tier1)<br/>before deadline<br/>validUntil ≥ deadline+cooldown"| PENDING
+  PENDING -->|"Tier 1 attested"| ACTIVE
+
+  ACTIVE -->|"deadline passes"| CHECK
+  CHECK -->|YES| COOLDOWN
+  CHECK -->|NO| REFUNDING
+
+  COOLDOWN -->|"exit() reduces balance"| CHECK
+  COOLDOWN -->|"cooldown ends"| CHECK2
+
+  CHECK2 -->|YES| PAYABLE
+  CHECK2 -->|NO| REFUNDING
+
+  ANY -->|finalize| PAYABLE
+  PAYABLE --> PAID
+
+  %% ═══════════════════════════════════════════
+  %% TOKEN FLOWS
+  %% ═══════════════════════════════════════════
+  C -->|approve| MNEE
+  C -->|contribute| ACTIVE
+  ACTIVE -->|"safeTransferFrom(C→TP)"| MNEE
+
+  C -->|exit| COOLDOWN
+  COOLDOWN -->|"safeTransfer(→C)"| MNEE
+
+  C -->|claimRefund| REFUNDING
+  REFUNDING -->|"safeTransfer(→C)"| MNEE
+
+  PAID -->|"safeTransfer(→R)"| MNEE
+
+  %% ═══════════════════════════════════════════
+  %% OFF-CHAIN FLOWS
+  %% ═══════════════════════════════════════════
+  V -->|publish terms| DOC
+  DOC --> UI
+  UI -->|verify documentHash| TP
+  UI -->|read state| TP
+  TP -.->|events| IDX
+  IDX -->|pool discovery & filtering| UI
+
+  %% ═══════════════════════════════════════════
+  %% STYLING
+  %% ═══════════════════════════════════════════
+  style PENDING fill:#ffd700,stroke:#333
+  style ACTIVE fill:#90EE90,stroke:#333
+  style COOLDOWN fill:#87CEEB,stroke:#333
+  style PAYABLE fill:#DDA0DD,stroke:#333
+  style PAID fill:#808080,stroke:#333,color:#fff
+  style REFUNDING fill:#FF6B6B,stroke:#333
+  style CHECK fill:#fff,stroke:#333
+  style CHECK2 fill:#fff,stroke:#333
+  style POST_DEADLINE fill:#f0f0f0,stroke:#666,stroke-dasharray: 5 5

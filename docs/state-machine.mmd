@@ -1,0 +1,101 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#fff', 'primaryTextColor': '#333', 'primaryBorderColor': '#333', 'lineColor': '#666', 'secondaryColor': '#f4f4f4', 'tertiaryColor': '#fff'}}}%%
+stateDiagram-v2
+    direction TB
+
+    %% ═══════════════════════════════════════════
+    %% STATE DEFINITIONS
+    %% ═══════════════════════════════════════════
+
+    [*] --> PENDING: createPool()
+
+    state "PENDING" as PENDING
+    note right of PENDING
+        Awaiting vendor attestation
+        No contributions accepted
+    end note
+
+    state "ACTIVE" as ACTIVE
+    note right of ACTIVE
+        Tier 1 attested
+        Contributions open
+    end note
+
+    state "COOLDOWN" as COOLDOWN
+    note right of COOLDOWN
+        Exit window open
+        Contributors can withdraw
+    end note
+
+    state "PAYABLE" as PAYABLE
+    note right of PAYABLE
+        Threshold met
+        Ready for finalize()
+    end note
+
+    state "PAID" as PAID
+    note right of PAID
+        Funds sent to recipient
+        Terminal state
+    end note
+
+    state "REFUNDING" as REFUNDING
+    note right of REFUNDING
+        Threshold not met
+        Contributors claim refunds
+    end note
+
+    %% ═══════════════════════════════════════════
+    %% ATTESTATION GATE
+    %% ═══════════════════════════════════════════
+
+    PENDING --> ACTIVE: attestQuote(tier1)
+
+    %% ═══════════════════════════════════════════
+    %% DEADLINE TRANSITION (DYNAMIC CHECK)
+    %% ═══════════════════════════════════════════
+
+    state deadline_check <<choice>>
+    ACTIVE --> deadline_check: Deadline passes
+
+    deadline_check --> COOLDOWN: payableTier >= 1
+    deadline_check --> REFUNDING: payableTier = 0
+
+    %% ═══════════════════════════════════════════
+    %% COOLDOWN DYNAMICS
+    %% ═══════════════════════════════════════════
+
+    COOLDOWN --> REFUNDING: exit() drops below threshold
+
+    state cooldown_end <<choice>>
+    COOLDOWN --> cooldown_end: Cooldown ends
+
+    cooldown_end --> PAYABLE: payableTier >= 1
+    cooldown_end --> REFUNDING: payableTier = 0
+
+    %% ═══════════════════════════════════════════
+    %% TERMINAL STATES
+    %% ═══════════════════════════════════════════
+
+    PAYABLE --> PAID: finalize()
+
+    REFUNDING --> [*]: claimRefund()
+
+    %% ═══════════════════════════════════════════
+    %% STYLING
+    %% ═══════════════════════════════════════════
+
+    classDef pending fill:#FFD700,stroke:#B8860B,stroke-width:2px,color:#333
+    classDef active fill:#90EE90,stroke:#228B22,stroke-width:2px,color:#333
+    classDef cooldown fill:#87CEEB,stroke:#4682B4,stroke-width:2px,color:#333
+    classDef payable fill:#DDA0DD,stroke:#8B008B,stroke-width:2px,color:#333
+    classDef paid fill:#708090,stroke:#2F4F4F,stroke-width:2px,color:#fff
+    classDef refunding fill:#FF6B6B,stroke:#DC143C,stroke-width:2px,color:#fff
+    classDef choice fill:#fff,stroke:#666,stroke-width:1px
+
+    class PENDING pending
+    class ACTIVE active
+    class COOLDOWN cooldown
+    class PAYABLE payable
+    class PAID paid
+    class REFUNDING refunding
+    class deadline_check,cooldown_end choice

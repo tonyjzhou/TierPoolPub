@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="problemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5a5a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="solutionGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4ecdc4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#44a08d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="#4ecdc4" opacity="0.05"/>
+  <circle cx="1100" cy="700" r="200" fill="#ff6b6b" opacity="0.05"/>
+
+  <!-- Header -->
+  <text x="600" y="60" text-anchor="middle" font-size="42" font-weight="bold" fill="#fff">TierPool</text>
+  <text x="600" y="95" text-anchor="middle" font-size="18" fill="#a0a0a0">Trust-Minimized Group-Buy Escrow</text>
+
+  <!-- Divider line -->
+  <line x1="200" y1="120" x2="1000" y2="120" stroke="#4ecdc4" stroke-width="2" opacity="0.3"/>
+
+  <!-- Section Headers -->
+  <text x="280" y="170" text-anchor="middle" font-size="24" font-weight="600" fill="#ff6b6b">The Problem</text>
+  <text x="920" y="170" text-anchor="middle" font-size="24" font-weight="600" fill="#4ecdc4">TierPool Solution</text>
+
+  <!-- PROBLEM 1: Treasurer Risk -->
+  <g transform="translate(60, 200)">
+    <rect x="0" y="0" width="440" height="120" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="6" height="120" rx="3" fill="url(#problemGrad)"/>
+
+    <!-- Icon: Money bag with X -->
+    <circle cx="60" cy="60" r="35" fill="#ff6b6b" opacity="0.15"/>
+    <!-- Money bag shape -->
+    <path d="M50 45 L70 45 L67 50 L72 75 C72 82 48 82 48 75 L53 50 Z" fill="#ff6b6b" opacity="0.8"/>
+    <circle cx="60" cy="40" r="6" fill="#ff6b6b" opacity="0.8"/>
+    <!-- X mark -->
+    <circle cx="78" cy="42" r="10" fill="#ff6b6b"/>
+    <path d="M74 38 L82 46 M82 38 L74 46" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="120" y="45" font-size="18" font-weight="600" fill="#fff">Treasurer Risk</text>
+    <text x="120" y="70" font-size="14" fill="#b0b0b0">Organizer can disappear with</text>
+    <text x="120" y="90" font-size="14" fill="#b0b0b0">collected funds at any time</text>
+  </g>
+
+  <!-- PROBLEM 2: Terms Mutation -->
+  <g transform="translate(60, 340)">
+    <rect x="0" y="0" width="440" height="120" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="6" height="120" rx="3" fill="url(#problemGrad)"/>
+
+    <!-- Icon: Document with arrows -->
+    <circle cx="60" cy="60" r="35" fill="#ff6b6b" opacity="0.15"/>
+    <!-- Document -->
+    <rect x="45" y="40" width="25" height="35" rx="2" fill="#ff6b6b" opacity="0.8"/>
+    <line x1="50" y1="50" x2="65" y2="50" stroke="#1a1a2e" stroke-width="2"/>
+    <line x1="50" y1="57" x2="62" y2="57" stroke="#1a1a2e" stroke-width="2"/>
+    <line x1="50" y1="64" x2="58" y2="64" stroke="#1a1a2e" stroke-width="2"/>
+    <!-- Change arrows -->
+    <path d="M75 50 L85 60 L75 70" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="120" y="45" font-size="18" font-weight="600" fill="#fff">Terms Mutation</text>
+    <text x="120" y="70" font-size="14" fill="#b0b0b0">Deal terms change after your</text>
+    <text x="120" y="90" font-size="14" fill="#b0b0b0">contribution is locked in</text>
+  </g>
+
+  <!-- PROBLEM 3: Vendor Ghost -->
+  <g transform="translate(60, 480)">
+    <rect x="0" y="0" width="440" height="120" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="6" height="120" rx="3" fill="url(#problemGrad)"/>
+
+    <!-- Icon: Ghost shape -->
+    <circle cx="60" cy="60" r="35" fill="#ff6b6b" opacity="0.15"/>
+    <path d="M45 65 C45 45 75 45 75 65 L75 80 L70 75 L65 80 L60 75 L55 80 L50 75 L45 80 Z" fill="#ff6b6b" opacity="0.8"/>
+    <circle cx="52" cy="58" r="3" fill="#1a1a2e"/>
+    <circle cx="68" cy="58" r="3" fill="#1a1a2e"/>
+    <!-- Question mark -->
+    <text x="60" y="52" text-anchor="middle" font-size="12" fill="#1a1a2e" font-weight="bold">?</text>
+
+    <text x="120" y="45" font-size="18" font-weight="600" fill="#fff">Vendor Ghost</text>
+    <text x="120" y="70" font-size="14" fill="#b0b0b0">Vendor never formally commits,</text>
+    <text x="120" y="90" font-size="14" fill="#b0b0b0">leaving contributors with no recourse</text>
+  </g>
+
+  <!-- Arrow in the middle -->
+  <g transform="translate(540, 380)">
+    <path d="M0 0 L60 0 L60 -15 L90 15 L60 45 L60 30 L0 30 Z" fill="#4ecdc4" opacity="0.8"/>
+    <text x="45" y="70" text-anchor="middle" font-size="12" fill="#4ecdc4" font-weight="600">SOLVED BY</text>
+  </g>
+
+  <!-- SOLUTION 1: Escrow by Code -->
+  <g transform="translate(700, 200)">
+    <rect x="0" y="0" width="440" height="100" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="434" y="0" width="6" height="100" rx="3" fill="url(#solutionGrad)"/>
+
+    <!-- Icon: Lock -->
+    <circle cx="60" cy="50" r="30" fill="#4ecdc4" opacity="0.15"/>
+    <rect x="48" y="48" width="24" height="18" rx="3" fill="#4ecdc4"/>
+    <path d="M52 48 L52 42 C52 35 68 35 68 42 L68 48" stroke="#4ecdc4" stroke-width="4" fill="none"/>
+    <circle cx="60" cy="57" r="3" fill="#1a1a2e"/>
+
+    <text x="110" y="35" font-size="16" font-weight="600" fill="#fff">Escrow by Code</text>
+    <text x="110" y="55" font-size="13" fill="#b0b0b0">Funds held by immutable smart contract</text>
+    <text x="110" y="75" font-size="13" fill="#4ecdc4">No trusted treasurer needed</text>
+  </g>
+
+  <!-- SOLUTION 2: Attestation Gate -->
+  <g transform="translate(700, 315)">
+    <rect x="0" y="0" width="440" height="100" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="434" y="0" width="6" height="100" rx="3" fill="url(#solutionGrad)"/>
+
+    <!-- Icon: Checkmark in shield -->
+    <circle cx="60" cy="50" r="30" fill="#4ecdc4" opacity="0.15"/>
+    <path d="M45 40 L60 35 L75 40 L75 55 C75 65 60 72 60 72 C60 72 45 65 45 55 Z" fill="#4ecdc4" opacity="0.9"/>
+    <path d="M52 52 L58 58 L70 44" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="110" y="35" font-size="16" font-weight="600" fill="#fff">Attestation Gate</text>
+    <text x="110" y="55" font-size="13" fill="#b0b0b0">Vendor commits on-chain with validity period</text>
+    <text x="110" y="75" font-size="13" fill="#4ecdc4">Contributions only after commitment</text>
+  </g>
+
+  <!-- SOLUTION 3: Exit Window -->
+  <g transform="translate(700, 430)">
+    <rect x="0" y="0" width="440" height="100" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="434" y="0" width="6" height="100" rx="3" fill="url(#solutionGrad)"/>
+
+    <!-- Icon: Door with arrow -->
+    <circle cx="60" cy="50" r="30" fill="#4ecdc4" opacity="0.15"/>
+    <rect x="48" y="32" width="20" height="36" rx="2" fill="#4ecdc4" opacity="0.9"/>
+    <rect x="50" y="34" width="16" height="32" rx="1" fill="#2a2a4a"/>
+    <circle cx="63" cy="50" r="2" fill="#4ecdc4"/>
+    <!-- Exit arrow -->
+    <path d="M70 50 L82 50 M78 44 L84 50 L78 56" stroke="#4ecdc4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="110" y="35" font-size="16" font-weight="600" fill="#fff">Exit Window</text>
+    <text x="110" y="55" font-size="13" fill="#b0b0b0">Contributors can withdraw during cooldown</text>
+    <text x="110" y="75" font-size="13" fill="#4ecdc4">Rage-quit before finalization</text>
+  </g>
+
+  <!-- SOLUTION 4: Automatic Refunds -->
+  <g transform="translate(700, 545)">
+    <rect x="0" y="0" width="440" height="100" rx="12" fill="#2a2a4a" filter="url(#shadow)"/>
+    <rect x="434" y="0" width="6" height="100" rx="3" fill="url(#solutionGrad)"/>
+
+    <!-- Icon: Circular arrows (refresh) -->
+    <circle cx="60" cy="50" r="30" fill="#4ecdc4" opacity="0.15"/>
+    <path d="M45 50 A15 15 0 1 1 60 65" stroke="#4ecdc4" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M75 50 A15 15 0 1 1 60 35" stroke="#4ecdc4" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M42 45 L45 50 L50 47" stroke="#4ecdc4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78 55 L75 50 L70 53" stroke="#4ecdc4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="110" y="35" font-size="16" font-weight="600" fill="#fff">Automatic Refunds</text>
+    <text x="110" y="55" font-size="13" fill="#b0b0b0">Failed pools refund immediately</text>
+    <text x="110" y="75" font-size="13" fill="#4ecdc4">No coordinator action required</text>
+  </g>
+
+  <!-- Problem-Solution Connection Lines -->
+  <g stroke="#4ecdc4" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4">
+    <!-- Treasurer Risk -> Escrow by Code -->
+    <path d="M500 260 Q580 260 700 250" fill="none"/>
+
+    <!-- Terms Mutation -> Attestation Gate + Exit Window -->
+    <path d="M500 400 Q580 400 700 365" fill="none"/>
+    <path d="M500 400 Q580 400 700 480" fill="none"/>
+
+    <!-- Vendor Ghost -> Attestation Gate -->
+    <path d="M500 540 Q600 500 700 365" fill="none"/>
+  </g>
+
+  <!-- Footer: Key Insight -->
+  <g transform="translate(60, 680)">
+    <rect x="0" y="0" width="1080" height="80" rx="12" fill="#2a2a4a" opacity="0.7"/>
+    <text x="540" y="35" text-anchor="middle" font-size="14" font-weight="600" fill="#4ecdc4">Key Insight</text>
+    <text x="540" y="58" text-anchor="middle" font-size="13" fill="#b0b0b0">State is computed dynamically. A pool can flip from COOLDOWN to REFUNDING if exits reduce balance below threshold.</text>
+  </g>
+
+  <!-- MNEE Token badge -->
+  <g transform="translate(1050, 15)">
+    <rect x="0" y="0" width="120" height="30" rx="15" fill="#4ecdc4" opacity="0.2"/>
+    <text x="60" y="20" text-anchor="middle" font-size="11" fill="#4ecdc4">Powered by MNEE</text>
+  </g>
+</svg>

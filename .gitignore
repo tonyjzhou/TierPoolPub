@@ -1,0 +1,20 @@
+*/settings.local.json
+
+# Foundry
+/out/
+/cache/
+/broadcast/
+
+# Environment
+.env
+.env.local
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Generated reports
+gas-report.txt
+slither-report.txt
