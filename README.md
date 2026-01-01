@@ -185,16 +185,12 @@ The demo script automatically:
 - **Access Control**: State-based gating on all operations
 - **Comprehensive Tests**: 55 tests including reentrancy attack vectors
 
-See `slither-report.txt` for full static analysis results.
 
 ## Documentation
 
 | Document | Description |
 |----------|-------------|
-| [PRD.md](./PRD.md) | Full product requirements, state machine, API reference |
-| [idea.md](./idea.md) | Design rationale & spec evolution |
-| [gas-report.txt](./gas-report.txt) | Detailed gas benchmarks |
-| [slither-report.txt](./slither-report.txt) | Static analysis findings |
+| [SUBMISSION.md](./SUBMISSION.md) | Hackathon submission details |
 
 ## System Architecture
 
@@ -214,7 +210,7 @@ See `slither-report.txt` for full static analysis results.
 
 ```
 src/
-└── TierPool.sol    # Main contract (~500 lines)
+└── TierPool.sol    # Main contract (482 lines)
 
 script/
 ├── Deploy.s.sol    # Deployment script

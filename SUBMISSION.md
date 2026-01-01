@@ -2,15 +2,14 @@
 
 ## Overview
 
-**TierPool** is a trust-minimized group-buy escrow with vendor attestation and exit protection, built for the MNEE ecosystem on BSC.
+**TierPool** is a trust-minimized group-buy escrow with vendor attestation and exit protection, built for the MNEE ecosystem.
 
 ## Links
 
 | Resource | Link |
 |----------|------|
 | GitHub Repo | https://github.com/tonyjzhou/TierPool |
-| PRD | [PRD.md](./PRD.md) |
-| Design Rationale | [idea.md](./idea.md) |
+| README | [README.md](./README.md) |
 
 ## Quick Demo
 
@@ -22,7 +21,7 @@ forge install
 forge test
 
 # Run live demo (requires Foundry)
-anvil --fork-url https://bsc-dataseed.binance.org/ --chain-id 31337
+anvil --fork-url https://ethereum-rpc.publicnode.com
 # In new terminal:
 forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
 export TIERPOOL=<deployed_address>
@@ -78,12 +77,9 @@ See [PRD.md Section 6.4](./PRD.md) for detailed state diagram.
 | `script/Deploy.s.sol` | Deployment script |
 | `script/demo.sh` | Interactive demo |
 | `test/*.t.sol` | 55 comprehensive tests |
-| `PRD.md` | Full product requirements |
-| `gas-report.txt` | Gas benchmarks |
-| `slither-report.txt` | Static analysis |
+| `README.md` | Full documentation |
 
 ## Target Network
 
-- **Chain**: BSC Mainnet (Chain ID: 56)
 - **Token**: MNEE (`0x8ccedbAe4916b79da7F3F612EfB2EB93A2bFD6cF`)
-- **Demo**: Local Anvil fork (free, full functionality)
+- **Demo**: Local Anvil fork of Ethereum mainnet (free, full functionality)
