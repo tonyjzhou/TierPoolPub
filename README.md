@@ -87,8 +87,8 @@ createPool() ──► PENDING ──── attestQuote(tier1) ──► ACTIVE
 
 ```bash
 # Clone repository
-git clone https://github.com/<your-username>/TierPool.git
-cd TierPool
+git clone https://github.com/<your-username>/TierPoolPub.git
+cd TierPoolPub
 
 # Install dependencies
 forge install

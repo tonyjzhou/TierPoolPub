@@ -8,15 +8,15 @@
 
 | Resource | Link |
 |----------|------|
-| GitHub Repo | https://github.com/tonyjzhou/TierPool |
+| GitHub Repo | https://github.com/tonyjzhou/TierPoolPub |
 | README | [README.md](./README.md) |
 
 ## Quick Demo
 
 ```bash
 # Clone and test
-git clone https://github.com/tonyjzhou/TierPool.git
-cd TierPool
+git clone https://github.com/tonyjzhou/TierPoolPub.git
+cd TierPoolPub
 forge install
 forge test
 
